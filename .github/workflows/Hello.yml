@@ -9,6 +9,7 @@ on:
 
 # these are jobs inside the workflow
 jobs:
+# this is the name of the job
   greet:
     runs-on: ubuntu-latest
     steps:
