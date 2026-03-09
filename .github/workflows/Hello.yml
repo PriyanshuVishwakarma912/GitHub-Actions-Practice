@@ -1,0 +1,20 @@
+# Creating first workflow file for github actions using YAML in Hello.yml file
+# This is workflow name
+name: Hello
+
+# runs on a trigger
+on: 
+  push:
+    branches: [main]
+
+# these are jobs inside the workflow
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello to users
+        run: echo "Hello Everyone"
+
+      - name: say hello to username
+        run: echo "Hello $USER"
+  
