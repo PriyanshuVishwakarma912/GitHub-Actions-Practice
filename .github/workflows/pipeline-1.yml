@@ -1,0 +1,18 @@
+# name of pipeline
+name: First pipeline
+
+# this is event trigger (on)
+on: push
+
+# this is the job section that defines what work need to be done
+jobs:
+  # hello-job is the job name or id
+  hello-job:
+  # this is runner machine
+    runs-on: ubuntu-latest
+    # steps section
+    steps:
+    # step name
+      - name: say Hello
+        run: echo "Hello Priyanshu"
+    
