@@ -1,0 +1,30 @@
+name: CICD
+on:
+    workflow_dispatch:
+
+jobs:
+    code:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              run: echo "code clone from github"
+    
+    build:
+        needs: [code] # here needs are dependencies that means build is dependent on job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build Docker container
+              run: echo "Docker container build"
+    
+    test:
+        needs: [build]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test the container
+              run: echo "testing the container"
+    deploy:
+        needs: [test,build]
+        runs-on: ubuntu latest
+        steps:
+            - name: Deploy the app
+              run: echo "docker compose deploy the app"
