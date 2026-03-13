@@ -1,0 +1,26 @@
+name: priyanshu
+
+on:
+  push:
+    branches: [main, dev]
+
+jobs:
+  wake_up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: brush the teeth and take a bath
+        run: echo "execute wake_up plan"
+
+  ready_for_college:
+    runs-on: ubuntu-latest
+    needs: wake_up  # Yeh wake_up khatam hone ka wait karega
+    steps:
+      - name: prepare for the college
+        run: echo "execute the college plan"
+
+  travelling:
+    runs-on: ubuntu-latest
+    needs: ready_for_college # Yeh ready hone ka wait karega
+    steps:
+      - name: travel to reach the college
+        run: echo "execute travelling plan"
