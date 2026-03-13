@@ -60,6 +60,8 @@ jobs:
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true # Important for first-time setup
 
       - name: Upload static files
         uses: actions/upload-pages-artifact@v3 # Ensure version compatibility
