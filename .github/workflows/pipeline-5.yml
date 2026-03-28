@@ -12,18 +12,21 @@ jobs: # starting of job
 
     build: # name of job
         runs-on: ubuntu-latest
+        needs: code
         steps:
             - name: This step of job can check the build part
               run: echo " run the build "
 
     test: # name of job
         runs-on: ubuntu-latest
+        needs: build
         steps:
             - name: This step of job can check the testing part
               run: echo "run the test"
     
     deploy:  # name of job
         runs-on: ubuntu-latest
+        needs: test
         steps:
             - name: This step of job can check the deploy part
               run: echo "run the deploy"
