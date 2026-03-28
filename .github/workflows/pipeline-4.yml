@@ -1,30 +1,37 @@
+# Name of the pipeline
 name: CICD
+
+# 'on' is the trigger (when this workflow run)
 on:
     workflow_dispatch:
-
+# This is the job section inside the workflow
 jobs:
+    # job-1 'this is the name of job'
     code:
         runs-on: ubuntu-latest
         steps:
             - name: checkout code
               run: echo "code clone from github"
-    
+   
+     # job-2 'this is the name of job'
     build:
         # needs: [code] # here needs are dependencies that means build is dependent on job
         runs-on: ubuntu-latest
         steps:
             - name: Build Docker container
               run: echo "Docker container build"
-    
+    #  job-3 'this is the name of job'
     test:
         # needs: [build]
         runs-on: ubuntu-latest
         steps:
             - name: Test the container
               run: echo "testing the container"
+    # job-4 'this is the name of job'
     deploy:
         # needs: [test,build]
         runs-on: ubuntu latest
         steps:
             - name: Deploy the app
               run: echo "docker compose deploy the app"
+              

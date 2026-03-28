@@ -1,0 +1,29 @@
+name: Github-Actions-Revision # workflow name
+on:  # Event trigger
+    push:
+        branches: [main]
+
+jobs: # starting of job
+    code: # name of job
+        runs-on: ubuntu-latest
+        steps:
+        - name: This step of job can checks the code part
+          run: echo " run the code "
+
+    build: # name of job
+        runs-on: ubuntu-latest
+        steps:
+            - name: This step of job can check the build part
+              run: echo " run the build "
+
+    test: # name of job
+        runs-on: ubuntu-latest
+        steps:
+            - name: This step of job can check the testing part
+              run: echo "run the test"
+    
+    deploy:  # name of job
+        runs-on: ubuntu-latest
+        steps:
+            - name: This step of job can check the deploy part
+              run: echo "run the deploy"
