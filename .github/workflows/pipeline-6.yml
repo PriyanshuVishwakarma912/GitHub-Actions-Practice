@@ -1,0 +1,11 @@
+name: Revision Pipeline
+on:
+    push:
+        branches: [main]
+
+jobs:
+    understand_devops_syllabus:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read devops syllabus
+              run: devops-syllabus
