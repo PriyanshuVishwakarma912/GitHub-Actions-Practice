@@ -1,11 +1,23 @@
-name: Revision Pipeline
+# name: Revision Pipeline
+# on:
+#     push:
+#         branches: [main]
+
+# jobs:
+#     understand_devops_syllabus:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Read devops syllabus
+#               run: echo "devops-syllabus"
+name: Hello Workflow
 on:
     push:
         branches: [main]
-
 jobs:
-    understand_devops_syllabus:
+    greeting:
         runs-on: ubuntu-latest
-        steps:
-            - name: Read devops syllabus
-              run: echo "devops-syllabus"
+
+        steps: 
+            - name: Print message
+              run: echo "Hello GitHub Actions"
+         
