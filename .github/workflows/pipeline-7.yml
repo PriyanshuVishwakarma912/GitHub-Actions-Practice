@@ -1,0 +1,15 @@
+name: Github Actions Pipelines
+on:
+    push:
+        branches: [main]
+        paths:
+            - '**.html'
+jobs:
+    coding:
+        runs-on: ubuntu-latest
+        steps:
+            - name: The Coding part
+              uses: actions/checkout@v3
+
+            - name: Telling the versions
+              run: docker --version
