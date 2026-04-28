@@ -1,7 +1,16 @@
 name: Nodejs Workflow
-on:
-    push:
-        branches: [main]
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: This is the environment value where the workflow runs
+        default: "main"
+        required: true
+        type: choice
+        options:
+          - main
+          - prod
+          - dev
 
 jobs:
     build:
