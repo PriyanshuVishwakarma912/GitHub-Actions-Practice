@@ -2,6 +2,6 @@
   "name": "my-app",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"CI working\""
+    "build": "echo \"CI working\""
   }
 }
