@@ -3,7 +3,7 @@ on:
     push:
         branches: [main]
         paths:
-            - '**.html'
+            - '**/*.html'
 jobs:
     coding:
         runs-on: ubuntu-latest
