@@ -21,16 +21,19 @@ jobs:
       - name: pull code from github
         run: echo "git pull"
   build:
+    needs: code
     runs-on: ubuntu-latest
     steps:
       - name: docker build
         run: echo "docker build -t app-name ."
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: test the code
         run: echo "test application code"
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: deploy on server
