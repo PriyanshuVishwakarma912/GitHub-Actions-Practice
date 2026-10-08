@@ -1,34 +1,37 @@
-# ci/cd practice file 
 name: cicd pipeline
-
-# on:
-#   push:
-#     branches:
-#       - main
 on:
-  workflow_dispatch: 
-
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: This is the environment values where this workflows run
+        default: development
+        required: true
+        type: choice
+        options:
+          - development
+          - staging
+          - production
 jobs:
-    code:
-      runs-on: ubuntu-latest
-      steps:
-        - name: pull code from github
-          run: echo "git pull"
-    
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: docker build
-          run: echo "docker build -t app-name ."
-
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: test the code
-          run: echo "test application code"
-          
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: deploy on server
-          run: echo "Deploy application on AWS"
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull code from github
+        run: echo "git pull"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: docker build
+        run: echo "docker build -t app-name ."
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test the code
+        run: echo "test application code"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy on server
+        run: echo "Deploy application on AWS"
