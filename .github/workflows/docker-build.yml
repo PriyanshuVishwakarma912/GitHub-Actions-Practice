@@ -11,3 +11,12 @@ jobs:
               run: echo "Hello GitHub Users"
             - name: congrats to achievers
               run: echo "Congratulations to every achievers"
+    namaste:
+        runs-on: ubuntu-latest
+        steps:
+            - name: greet in Hindi
+              run: echo "Namaste ji"
+            - name: greet in Punjabi
+              run: echo "Sastriyakal paji"
+            
+            
