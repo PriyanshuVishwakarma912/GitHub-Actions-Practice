@@ -7,16 +7,26 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    code:
+      runs-on: ubuntu-latest
+      steps:
+        - name: pull code from github
+          run: echo "git pull"
+    
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: docker build
+          run: echo "docker build -t app-name ."
 
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Applications
-        run: npm run build
-      
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test the code
+          run: echo "test application code"
+          
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: deploy on server
+          run: echo "Deploy application on AWS"
