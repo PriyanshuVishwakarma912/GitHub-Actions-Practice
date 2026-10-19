@@ -1,0 +1,22 @@
+# Packages - issues or vulnerability (scan)
+name: Depedencies Scan
+on:
+    workflow_call: 
+
+jobs:
+    dependencies-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Set up python 3.14
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.14"
+
+            - name: Install Pip audit
+              run: pip install pip-audit
+
+            - name: Audit Depedencies
+              run: pip audit -r requirements.txt
