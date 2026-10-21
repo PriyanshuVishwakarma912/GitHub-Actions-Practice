@@ -1,7 +1,7 @@
 name: Docker CI/CD
 
 on:
-    workflow_dispatch
+    workflow_call: 
 jobs:
     docker: # Here docker is the job name
         runs-on: ubuntu-latest
@@ -19,4 +19,7 @@ jobs:
               uses: docker/build-push-action@v7
               with:
                 push: true
-                tags: ${{ vars.DOCKERHUB_USERNAME }}/app:latest
+                tags: |
+                   ${{ vars.DOCKERHUB_USERNAME }}/github-action-app:${{ github.ref_name }}
+                   ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:latest
+                   ${{ vars.DOCKERHUB_USERNAME }}/github-actions-app:${{ github.sha}}
