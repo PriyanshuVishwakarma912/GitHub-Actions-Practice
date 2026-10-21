@@ -1,7 +1,8 @@
 name: Github-Actions-Revision # workflow name
 on:  # Event trigger
-    push:
-        branches: [main]
+    # push:
+    #     branches: [main]
+    workflow_dispatch: 
 
 jobs: # starting of job
     code: # name of job

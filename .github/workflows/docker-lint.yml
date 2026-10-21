@@ -1,0 +1,3 @@
+# Scan the Dockerfile for issues and CVEs (Common vulnerability and exposures)
+name: Docker Lint
+

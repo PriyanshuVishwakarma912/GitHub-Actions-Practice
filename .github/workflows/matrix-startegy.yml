@@ -1,9 +1,9 @@
 name: Python matrix strategy
 
 on:
-    push:
-        branches: [main]
-
+    # push:
+    #     branches: [main]
+    workflow_dispatch: 
 jobs:
     test:
         runs-on: ubuntu-latest

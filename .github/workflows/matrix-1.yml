@@ -2,12 +2,13 @@
 name: Matrix
 
 on:
-    push:
-        branches:
-            - main
-        paths:
-            - '*.html'
-            - '*.py'
+    # push:
+    #     branches:
+    #         - main
+    workflow_dispatch: 
+          # paths:
+          #   - '*.html'
+          #   - '*.py'
 jobs:
     validate:
         runs-on: ubuntu-latest

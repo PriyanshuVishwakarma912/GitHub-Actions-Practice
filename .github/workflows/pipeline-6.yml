@@ -11,8 +11,7 @@
 #               run: echo "devops-syllabus"
 name: Hello Workflow
 on:
-    push:
-        branches: [main]
+    workflow_dispatch: 
 jobs:
     greeting:
         runs-on: ubuntu-latest

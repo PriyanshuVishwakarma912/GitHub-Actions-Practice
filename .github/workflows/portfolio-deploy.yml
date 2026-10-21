@@ -36,8 +36,10 @@
 name: Portfolio
 
 on:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
+  workflow_dispatch:
+    
 
 # Necessary permissions for GitHub Pages
 permissions:

@@ -2,7 +2,8 @@
 name: First pipeline
 
 # this is event trigger (on)
-on: push
+on:
+  workflow_dispatch: 
 
 # this is the job section that defines what work need to be done
 jobs:

@@ -1,8 +1,9 @@
 name: priyanshu
 
 on:
-  push:
-    branches: [main, dev]
+  # push:
+  #   branches: [main, dev]
+  workflow_dispatch: 
 
 jobs:
   wake_up:

@@ -1,9 +1,11 @@
 name: Github Actions Pipelines
 on:
-    push:
-        branches: [main]
-        paths:
-            - '**/*.html'
+    # push:
+    #     branches: [main]
+    #     paths:
+    #         - '**/*.html'
+    workflow_dispatch:
+      
 jobs:
     coding:
         runs-on: ubuntu-latest
