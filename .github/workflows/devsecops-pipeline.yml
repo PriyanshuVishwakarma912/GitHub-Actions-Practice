@@ -15,10 +15,14 @@ jobs:
 
     docker-scan:
         uses: ./.github/workflows/docker-lint.yml
-        
+
     # Continuous Deployment (CD) Part
     build:
         needs: [code-quality, secrets-scan, dependency-scan, docker-scan]
         uses: ./.github/workflows/docker_cicd.yml
         secrets: inherit
+
+    trivy:
+        needs: [build]
+        uses: ./.github/workflows/image-scan.yml
 
