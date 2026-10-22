@@ -3,6 +3,7 @@ on:
     workflow_dispatch:
 
 jobs:
+    # Continuous Integration (CI) Part
     code-quality:
         uses: ./.github/workflows/code-quality.yml
 
@@ -14,3 +15,10 @@ jobs:
 
     docker-scan:
         uses: ./.github/workflows/docker-lint.yml
+        
+    # Continuous Deployment (CD) Part
+    build:
+        needs: [code-quality, secrets-scan, dependency-scan, docker-scan]
+        uses: ./.github/workflows/docker_cicd.yml
+        secrets: inherit
+
