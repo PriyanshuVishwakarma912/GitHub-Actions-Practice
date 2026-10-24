@@ -8,7 +8,11 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: Deploy to EC2
+
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: SSH to EC2 server & create app folder
               uses: appleboy/ssh-action@v1
               with:
                 host: ${{ secrets.EC2_HOST }}
@@ -16,4 +20,28 @@ jobs:
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
                 script: |
                     echo "starting Deployment"
-                    mkdir devops
+                    mkdir -p devops
+
+            - name: Copy docker-compose file
+              uses: appleboy/scp-action@v1
+              with:
+                host: ${{ secrets.EC2_HOST }}
+                username: ${{ secrets.EC2_USER }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                source: docker-compose.yml
+                target: ~/devops
+
+            - name: SSH to EC2 server & run the app
+              uses: appleboy/ssh-action@v1
+              with:
+                host: ${{ secrets.EC2_HOST }}
+                username: ${{ secrets.EC2_USER }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                script: |
+                    echo "Running App"
+                    sudo apt-get update && sudo apt-get install -y docker.io docker-compose-v2
+                    sudo usermod -aG docker $USER
+                    export DOCKERHUB_USER=${{ vars.DOCKERHUB_USER }}
+                    export DOCKER_TAG=${{ github.event.workflow_run.head_sha }}
+                    echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin
+                    cd -p devops && docker compose down && docker compose up -d --build --force-recreate --pull always
