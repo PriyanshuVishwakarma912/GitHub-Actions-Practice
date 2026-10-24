@@ -41,7 +41,10 @@ jobs:
                     echo "Running App"
                     sudo apt-get update && sudo apt-get install -y docker.io docker-compose-v2
                     sudo usermod -aG docker $USER
+                    sg docker -c '
                     export DOCKERHUB_USER="${{ vars.DOCKERHUB_USER }}"
                     export DOCKER_TAG="${{ github.event.workflow_run.head_sha }}"
                     echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
                     cd devops && docker compose down && docker compose up -d --build --force-recreate --pull always
+
+                    
