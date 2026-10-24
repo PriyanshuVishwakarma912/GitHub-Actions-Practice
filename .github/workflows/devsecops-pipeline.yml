@@ -30,5 +30,7 @@ jobs:
     deploy:
         needs: [trivy]
         uses: ./.github/workflows/deploy-to-server.yml
+        with:
+            dockerhub_user: ${{ vars.DOCKERHUB_USERNAME }}
+            docker_tag: latest
         secrets: inherit
-
